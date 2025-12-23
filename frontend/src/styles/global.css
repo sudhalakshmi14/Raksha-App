@@ -1,0 +1,249 @@
+.page {
+  position: relative;
+  pointer-events: auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  min-height: 100vh;
+
+  background:
+    linear-gradient(
+      rgba(15, 23, 42, 0.65),
+      rgba(15, 23, 42, 0.65)
+    ),
+    url("/bg/stage-bg.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+
+
+/* Layout */
+.page {
+  min-height: 100vh;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Backgrounds */
+.light-bg {
+  background: #e9edf7;
+}
+
+.dark-bg {
+  background: #7b7b7b;
+}
+
+/* Card */
+.card {
+  background: #f3f5ff;
+  width: 380px;
+  padding: 40px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+.card,
+.profile-card {
+  background: rgba(243, 245, 255, 0.96);
+  backdrop-filter: blur(6px);
+}
+
+.icon {
+  font-size: 44px;
+}
+
+.brand {
+  color: #4657c8;
+}
+
+.subtitle {
+  color: #5f5f5f;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* Inputs */
+label {
+  display: block;
+  text-align: left;
+  font-size: 14px;
+  margin: 12px 0 6px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #c9cdef;
+  background: #e9ecfb;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 18px;
+  background: #4657c8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: #d9ddf2;
+  color: #333;
+}
+
+button:hover {
+  opacity: 0.95;
+}
+
+/* Footer link */
+.footer-text span {
+  color: #4657c8;
+  cursor: pointer;
+}
+
+/* SOS Page */
+.sos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  background: #4657c8;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.service-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.service {
+  padding: 10px 20px;
+  background: #dbe4ff;
+  border-radius: 10px;
+}
+
+.service.active {
+  border: 2px solid #4657c8;
+}
+
+.sos-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.sos-button {
+  width: 220px;
+  height: 220px;
+  background: rgb(210, 9, 13);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  font-weight: bold;
+  color: white;
+}
+
+/* Profile */
+.profile-card {
+  width: 420px;
+  background: #f3f5ff;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.avatar {
+  display: flex;
+  justify-content: center;
+}
+
+.avatar img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+}
+
+.upload-btn {
+  width: 100%;
+  margin: 15px 0;
+  background: #dbe4ff;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+
+.form-row div {
+  flex: 1;
+}
+
+.primary-btn {
+  background: #3b82f6;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.small-text {
+  font-size: 14px;
+  color: #555;
+}
+.profile-icon {
+  cursor: pointer;
+  z-index: 10;
+  position: relative;
+}
+
+.sos-button {
+  animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
