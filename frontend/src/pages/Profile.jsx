@@ -1,106 +1,53 @@
+import "../styles/profile.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
-  const [profile, setProfile] = useState({
-    fullName: "",
-    age: "",
-    address: "",
-    contact: "",
-    emergencyContact: ""
-  });
+  const [saved, setSaved] = useState(false);
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setProfile({
-      ...profile,
-      [e.target.name]: e.target.value
-    });
-  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSaved(true);
 
-  const handleSubmit = () => {
-    console.log("Profile Data:", profile);
-    alert("Profile saved successfully!");
+    setTimeout(() => {
+      navigate("/dashboard");
+    }, 1500);
   };
 
   return (
-    <div className="page center light-bg">
-      <div className="profile-card">
+    <div className="profile-wrapper">
+      <form className="profile-card" onSubmit={handleSubmit}>
+        <h2>Complete Your Safety Profile</h2>
+        <p className="subtitle">
+          This information helps us protect you during emergencies.
+        </p>
 
-        {/* Avatar */}
-        <div className="avatar">
-          <img
-            src="https://i.pravatar.cc/150"
-            alt="Profile"
-          />
+        <div className="section">
+          <h4>👤 Identity</h4>
+          <input placeholder="Full Name" required />
+          <input placeholder="Age" type="number" min="12" max="100" />
         </div>
 
-        <button className="upload-btn">📷 Upload Photo</button>
-
-        {/* Name & Age */}
-        <div className="form-row">
-          <div>
-            <label>Full Name</label>
-            <input
-              type="text"
-              name="fullName"
-              value={profile.fullName}
-              onChange={handleChange}
-              placeholder="John Doe"
-            />
-          </div>
-
-          <div>
-            <label>Age</label>
-            <input
-              type="number"
-              name="age"
-              value={profile.age}
-              onChange={handleChange}
-              placeholder="30"
-            />
-          </div>
+        <div className="section">
+          <h4>📞 Emergency Contacts</h4>
+          <input placeholder="Your Contact Number" required />
+          <input placeholder="Emergency Contact Number" required />
         </div>
 
-        {/* Address */}
-        <label>Home Address</label>
-        <input
-          type="text"
-          name="address"
-          value={profile.address}
-          onChange={handleChange}
-          placeholder="123 Main St, Anytown, USA"
-        />
-
-        {/* Contacts */}
-        <div className="form-row">
-          <div>
-            <label>Contact Number</label>
-            <input
-              type="text"
-              name="contact"
-              value={profile.contact}
-              onChange={handleChange}
-              placeholder="(555) 123-4567"
-            />
-          </div>
-
-          <div>
-            <label>Emergency Contact</label>
-            <input
-              type="text"
-              name="emergencyContact"
-              value={profile.emergencyContact}
-              onChange={handleChange}
-              placeholder="(555) 765-4321"
-            />
-          </div>
+        <div className="section">
+          <h4>📍 Location</h4>
+          <textarea placeholder="Home Address" />
         </div>
 
-        <button className="primary-btn" onClick={handleSubmit}>
-          Create Profile & Continue
-        </button>
+        {saved && <div className="success">✅ Profile saved successfully</div>}
 
-      </div>
+        <button className="primary-btn">Save Safety Profile</button>
+
+        <p className="privacy">
+          🔒 Your information is securely stored and shared only during emergencies.
+        </p>
+      </form>
     </div>
   );
 }
-

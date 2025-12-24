@@ -14,7 +14,11 @@ export default function AppRouter() {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/sos" element={<SOS />} />
-      <Route path="/profile" element={<Profile />} />
+      <Route path="/" element={<Splash />} />
+<Route path="/welcome" element={<Welcome />} />
+<Route path="/profile" element={<Profile />} />
+<Route path="/dashboard" element={<SOS />} />
+
     </Routes>
   );
 }

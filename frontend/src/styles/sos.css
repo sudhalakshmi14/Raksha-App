@@ -1,0 +1,143 @@
+.sos-page {
+  height: 100vh;
+  background: #f8f9fb;
+  display: flex;
+  flex-direction: column;
+}
+
+/* TOP BAR */
+.top-bar {
+  height: 60px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.menu {
+  font-size: 18px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.right-icons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.green {
+  background: #22c55e;
+}
+
+.profile-icon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* SOS BUTTON */
+.main-sos {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sos-circle {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: #ff3b30;
+  border: none;
+  color: white;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  box-shadow: none;
+}
+
+.sos-circle.enabled {
+  opacity: 1;
+  box-shadow: 0 0 40px rgba(255, 59, 48, 0.8);
+  animation: pulse 1.5s infinite;
+}
+
+.sos-text {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.sos-icon {
+  font-size: 40px;
+  margin: 10px 0;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+/* OPTIONS */
+.options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.option {
+  background: #f0f0f0;
+  border-radius: 50%;
+  height: 110px;
+  width: 110px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.option.selected {
+  background: #e0e7ff;
+  border: 2px solid #4f5bd5;
+}
+
+.option .emoji {
+  font-size: 28px;
+}
+
+.option p {
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+/* TOAST MESSAGE */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1f2937;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  animation: fadeUp 0.3s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translate(-50%, 10px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}

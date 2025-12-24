@@ -1,78 +1,73 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../styles/sos.css";
 
 export default function SOS() {
   const navigate = useNavigate();
-  const [service, setService] = useState("Police");
+  const [selected, setSelected] = useState(null);
+  const [triggered, setTriggered] = useState(false);
 
-  // 🔴 Vibrate Function
-  const triggerVibration = () => {
-    if ("vibrate" in navigator) {
-      // Pattern: vibrate, pause, vibrate, pause, vibrate
-      navigator.vibrate([300, 150, 300, 150, 500]);
-    } else {
-      alert("Vibration not supported on this device");
-    }
+  const handleSOS = () => {
+    if (!selected) return;
+
+    setTriggered(true);
+
+    setTimeout(() => {
+      setTriggered(false);
+    }, 3000);
   };
 
   return (
-    <div className="page light-bg">
+    <div className="sos-page">
+      {/* TOP BAR */}
+      <header className="top-bar">
+        <div className="menu">☰ <span>Home</span></div>
 
-      {/* Header */}
-      <div className="sos-header">
-        <h2>Emergency Alert</h2>
-        <div
-          className="profile-icon"
-          onClick={() => navigate("/profile")}
-        >
-          👤
+        <div className="right-icons">
+          <span className="dot green"></span>
+          <span className="profile-icon" onClick={() => navigate("/profile")}>
+            👤
+          </span>
         </div>
+      </header>
+
+      {/* SOS BUTTON */}
+      <div className="main-sos">
+        <button
+          className={`sos-circle ${selected ? "enabled" : ""}`}
+          onClick={handleSOS}
+        >
+          <span className="sos-text">Active</span>
+          <span className="sos-icon">🚨</span>
+          <span className="sos-text">Assailant</span>
+        </button>
       </div>
 
-      <p className="subtitle center-text">
-        Select the service you need, then press and hold the SOS button.
-      </p>
-
-      {/* Services */}
-      <div className="service-row">
-        <div
-          className={`service ${service === "Police" ? "active" : ""}`}
-          onClick={() => setService("Police")}
-        >
-          🚓 Police
-        </div>
-
-        <div
-          className={`service ${service === "Fire" ? "active" : ""}`}
-          onClick={() => setService("Fire")}
-        >
-          🔥 Fire
-        </div>
-
-        <div
-          className={`service ${service === "Ambulance" ? "active" : ""}`}
-          onClick={() => setService("Ambulance")}
-        >
-          🚑 Ambulance
-        </div>
+      {/* OPTIONS */}
+      <div className="options">
+        {["Fire", "Police", "Ambulance", "Other"].map((item) => (
+          <div
+            key={item}
+            className={`option ${selected === item ? "selected" : ""}`}
+            onClick={() => setSelected(item)}
+          >
+            <span className="emoji">
+              {item === "Fire" && "🔥"}
+              {item === "Police" && "🛡️"}
+              {item === "Ambulance" && "🚑"}
+              {item === "Other" && "📞"}
+            </span>
+            <p>{item}</p>
+          </div>
+        ))}
       </div>
 
-      {/* 🔴 SOS BUTTON */}
-      <div className="sos-wrapper">
-        <div
-          className="sos-button"
-          onClick={() => {
-            triggerVibration();
-            alert(`SOS sent to ${service}!`);
-          }}
-        >
-          SOS
+      {/* POPUP MESSAGE */}
+      {triggered && (
+        <div className="toast">
+          🚨 SOS sent for <b>{selected}</b>. Help is on the way.
         </div>
-      </div>
-
-      <p className="center-text small-text">
-        Press the button in case of an emergency.
-      </p>
+      )}
     </div>
   );
 }
